@@ -3,12 +3,12 @@
 TÍTULO 3 / CAPÍTULO 2 / Art. 63 - É obrigatória a acessibilidade em sítios da internet geridos por nacionais para portadores de deficiência
 § 1º Os sítios devem conter símbolo de acessibilidade em destaque.
 
-***Normas de Acessibilidade ABNT***
+***Normas de Acessibilidade ABNT (17225:2025)***
 (https://www.abntcolecao.com.br/mpf/norma.aspx?ID=567818#)
 OBRIGATÓRIOS
 - Interação só pelo teclado tem que ser possível
-   *Indicador de foco visível (ressalta o botão quando passa o mouse em cima
-   * Elementos minimamente focáveis (botão essencial pode ser usado usando tab)
+   *Indicador de foco visível (ressalta o botão quando passa o mouse em cima)
+   * Elementos minimamente focáveis (botão essencial que pode ser usado usando tab)
    * Todo elemento focável precisa ser interagível e segue um ordem lógica (que faça sentido)
    * Não utilizar teclas modificadoras (por exemplo, Control + Alt + F4. Não usar mais de uma tecla)
 - Imagens
@@ -17,6 +17,50 @@ OBRIGATÓRIOS
 - Cabeçalho
    * Único cabeçalho principal obrigatório para separar seções de conteúdo, com semântica determinada
    * Todos os outros cabeçalhos seguem uma lógica estritamente hierárquica
-- Regiões
+- Link e Navegação
+   * Todos os links possuem nome ou texto que indique a sua função ou destino
+   * Deve haver links para contornar blocos de conteúdo repetidos em diferentes páginas
+   * Mais de uma forma de encontrar uma página (a não ser que ela seja a etapa de um processo)
+   * Mecanismo de navegação tem que ser consistente, assim como os mecanismos de ajuda e componentes que se repetem entre páginas
+- Botões e Controles
+   * Todos os botões possuem um texto que indica a sua função
+   * Elementos interativos tem que ter no mínimo 24 pixels CSS de altura E largura
+   * Nada é acionado só porque você passou o mouse em cima, por exemplo, ou enquanto você está digitando algo
+   * Toda ação do usuário precisa ter um feedback perceptível
+- Formulários e Entrada de dados
+   * Todo formulário tem que ser identificado por um rótulo/título visível e que descreve o formulário
+   * Campos obrigatórios de preenchimento tem que estar identificados
+   * Mensagem de erro identifica o erro e o campo com erro e também mostra uma sugestão de como consertar o erro (a não ser por razões de segurança)
+   * Campos de entrada sobre dados já preenchidos anteriormente e que ainda estão válidos devem ter preenchimento obrigatório (a não ser por razões de segurança)
+   * Métodos de validação que exijam capacidade motora específica devem possuir uma alternativa
+- Apresentação
+   * A compreensão e utilização do conteúdo não pode depender somente de uma característica sensorial (o som, por exemplo)
+   * Deve haver mais de uma forma de orientação de exibição, a não ser que seja essencial (ver com celular deitado ou em pé, por exemplo)
+   * Não pode ter barra de rolagem em duas dimensões (uma barra horizontal e outra vertical), a não ser em mapas, diagramas, etc
+- Uso de cores
+   * Todo texto tem que ter contraste de pelo menos 4,5:1 com o fundo
+   * Componente de interface tem que ter contraste de pelo menos 3:1 com o fundo
+   * Objetos gráficos tem contraste de pelo menos 3:1 com o fundo
+   * Indicador de foco (quando ressalta o botão ao passar o mouse em cima) tem contraste de pelo menos 3:1 com o fundo
+- Conteúdo textual
+   * Espaçamento entre as linhas é de pelo menos 1,5 vezes o tamanho da fonte(a não ser que seja personalizável)
+   * Espaçamento entre parágrafos é de pelo menos 2 vezes o tamanho da fonte(a não ser que seja personalizável)
+   * Espaçamento entre as letras é de pelo menos 0,12 vezes o tamanho da fonte (a não ser que seja personalizável)
+   * Espaçamento entre as palavras é de pelo menos 0,16 vezes o tamanho da fonte (a não ser que seja personalizável)
+   * A largura dos blocos de texto não ultrapassa 80 caracteres(a não ser que seja personalizável)
+   * Não pode haver perda de conteúdo quando o texto é redimensionado
+- Codificação e Marcação semântica
+   * Cada página tem título único
+   * Página não pode bloquear o recurso de zoom do usuário
+- Áudio e Vídeo
+   * Todo áudio e vídeo tem uma alternativa em texto (legenda\audiodescrição)
+   * Não pode haver áudio que toca sozinho e dura mais que 3 segundos (a não ser que tenha como pausar ou mudar o volume)
+- Animação
+   * Não pode haver animação que inicie sozinha e dure mais que 5 segundos (a não ser que tenha como pausar ou ocultar, ou então seja essencial)
+   * Animação não deve piscar mais que um flash geral e um flash vermelho
+- Tempo
+   * Página não pode atualizar sozinha (a não ser que tenha como esconder ou seja essencial)
 
-TEMPO: 1h07min (por enquanto)
+OBSERVAÇÃO: No final do texto ABNT tem um checklist  de todas as normas, pode ser útil mais para frente. Além disso, não inclui normas recomendadas, apenas as obrigatórias.
+
+TEMPO: 2h09min
