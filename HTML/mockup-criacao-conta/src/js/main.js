@@ -55,8 +55,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // validação de confirmação de senha + validação de geolocalização
     form.addEventListener('submit', function (e) {
+    // Validação personalizada para Nome de Usuário
+    const usernameInput = document.getElementById('username');
+        if (usernameInput && usernameInput.value.trim() === '') {
+           e.preventDefault();
+           showError('Por favor, preencha o campo Nome de Usuário.');
+           usernameInput.focus();
+           return;
+        }
+        const emailInput = document.getElementById('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailInput && !emailRegex.test(emailInput.value.trim())) {
+        e.preventDefault();
+        showError('Está faltando o @ no e-mail. Insira um e-mail válido.');
+        emailInput.focus();
+        return;
+        }
         // checa se os campos de senha existem antes
         if (passwordInput && confirmInput) {
             if (passwordInput.value !== confirmInput.value) {
@@ -73,7 +88,9 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // formulário segue normalmente (ou coloque envio via fetch/AJAX aqui)
+        // Se todas as validações passaram, redireciona para login.html
+        e.preventDefault(); // Impede envio real do formulário (remova se for usar backend)
+        window.location.href = '../../login.html';
     });
 
     // limpa erro se usuário corrigir a confirmação
