@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mapa Interativo</title>
+
+    <!-- Leaflet CSS (sem integrity/crossorigin para evitar bloqueio se hash estiver errado) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <style>
+        body, html { height: 100%; margin: 0; font-family: Arial, sans-serif; }
+        main { padding: 10px; }
+        /* mapa ocupa área visível */
+        #map { width: 100%; height: 70vh; border: 1px solid #ddd; border-radius:6px; }
+        footer { padding: 10px; color:#666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="map" aria-label="Mapa do Brasil interativo"></div>
+    </main>
+    <footer>
+        Mapa fornecido por OpenStreetMap via Leaflet
+    </footer>
+
+    <!-- Leaflet JS (sem integrity/crossorigin) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+    // inicializa só depois do DOM para garantir que #map exista
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof L === 'undefined') {
+            console.error('Leaflet não carregou. Verifique a tag <script> e a rede.');
+            return;
+        }
+
+        const brasilCenter = [-14.2350, -51.9253];
+        const map = L.map('map', { zoomControl: true }).setView(brasilCenter, 4);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.control.scale().addTo(map);
+
+        map.on('click', function(e) {
+            const { lat, lng } = e.latlng;
+            L.marker([lat, lng]).addTo(map)
+              .bindPopup(`Lat: ${lat.toFixed(5)}<br>Lng: ${lng.toFixed(5)}`)
+              .openPopup();
+        });
+
+        map.on('locationfound', function(e) {
+            const radius = e.accuracy;
+            L.marker(e.latlng).addTo(map)
+             .bindPopup("Você está aqui (aprox. " + Math.round(radius) + " m).").openPopup();
+            L.circle(e.latlng, radius).addTo(map);
+        });
+        map.on('locationerror', function(e) {
+            console.warn("Localização: " + e.message);
+        });
+
+        map.locate({ setView: false, maxZoom: 12 });
+    });
+    </script>
+</body>
+</html>
