@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
+
+    <!-- limpa os dados mock de conta sempre que a página for aberta (preview) -->
+    <script>
+        (function () {
+            try {
+                localStorage.removeItem('mock_users'); // remove apenas a chave dos usuários mock
+            } catch (err) {
+                // silencia erros (ex.: ambiente sem localStorage)
+                console.warn('Não foi possível limpar localStorage:', err);
+            }
+        })();
+    </script>
 </head>
 <body>
     <nav>
