@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-+yigt&vq7fcvu_5+@h06!%wb2v(@&wv#)%sxg57+vd64=db1kn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'secundarios',
     'django.contrib.sites',
 ]
+
+# Configuração necessária quando 'django.contrib.sites' está ativado.
+# Define o ID do Site atual. Se a tabela django_site não tiver uma entrada com
+# esse ID, rode as migrations e crie/atualize o Site correspondente.
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -62,11 +67,17 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "django.template.context_processors.csrf",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
         },
     },
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
 ]
 
 WSGI_APPLICATION = "ConectaEsporte.wsgi.application"

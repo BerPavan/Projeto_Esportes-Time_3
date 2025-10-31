@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form action="#" method="post">
+    <form action="{% url 'admin:login' %}" method="post">
+        {% csrf_token %}
         <label for="email">E-mail:</label><br>
         <input type="email" id="email" name="email" required><br><br>
         

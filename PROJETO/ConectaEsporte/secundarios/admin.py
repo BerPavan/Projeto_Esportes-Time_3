@@ -12,7 +12,12 @@ class UserCreationForm(forms.ModelForm):
         model = User
         fields = ('email',)
     
-    def limpa_senha2(self):
+    def clean_senha2(self):
+        """Validação do campo de confirmação de senha.
+
+        O nome deve ser 'clean_<fieldname>' para que o Django o execute
+        automaticamente durante a validação do formulário.
+        """
         s1 = self.cleaned_data.get("senha1")
         s2 = self.cleaned_data.get("senha2")
         if s1 and s2 and s1 != s2:
@@ -31,7 +36,8 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'is_staff', 'is_superuser')
     list_filter = ('is_staff', 'is_superuser', 'is_active')
     fieldsets = (
-        (None, {'fields': ('email', 'senha')}),
+        # 'password' é o nome correto do campo do AbstractBaseUser
+        (None, {'fields': ('email', 'password')}),
         ('Informações Pessoais', {'fields': ('first_name', 'last_name')}),
         ('Permissões', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
     )
