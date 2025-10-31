@@ -5,22 +5,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const errorEl = document.getElementById('error-message');
     const form = document.getElementById('signup-form');
 
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const confirmInput = document.getElementById('confirm-password');
 
-    function showError(msg) {
+    function showMessage(msg, isError = true) {
         errorEl.textContent = msg || '';
+        errorEl.style.color = isError ? 'red' : 'green';
     }
 
     function clearCoords() {
-        latInput.value = '';
-        lngInput.value = '';
+        if (latInput) latInput.value = '';
+        if (lngInput) lngInput.value = '';
     }
 
     function requestGeolocation() {
-        showError('');
+        showMessage('');
         if (!navigator.geolocation) {
-            showError('Geolocalização não disponível neste navegador.');
+            showMessage('Geolocalização não disponível neste navegador.');
             if (geoCheckbox) geoCheckbox.checked = false;
             clearCoords();
             return;
@@ -28,16 +31,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         navigator.geolocation.getCurrentPosition(
             (pos) => {
-                latInput.value = pos.coords.latitude;
-                lngInput.value = pos.coords.longitude;
+                if (latInput) latInput.value = pos.coords.latitude;
+                if (lngInput) lngInput.value = pos.coords.longitude;
             },
             (err) => {
                 if (geoCheckbox) geoCheckbox.checked = false;
                 clearCoords();
                 if (err.code === err.PERMISSION_DENIED) {
-                    showError('Permissão de localização negada.');
+                    showMessage('Permissão de localização negada.');
                 } else {
-                    showError('Erro ao obter localização: ' + (err.message || ''));
+                    showMessage('Erro ao obter localização: ' + (err.message || ''));
                 }
             },
             { enableHighAccuracy: true, timeout: 10000 }
@@ -46,59 +49,80 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (geoCheckbox) {
         geoCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                requestGeolocation();
-            } else {
+            if (this.checked) requestGeolocation();
+            else {
                 clearCoords();
-                showError('');
+                showMessage('');
             }
         });
     }
 
     form.addEventListener('submit', function (e) {
-    // Validação personalizada para Nome de Usuário
-    const usernameInput = document.getElementById('username');
-        if (usernameInput && usernameInput.value.trim() === '') {
-           e.preventDefault();
-           showError('Por favor, preencha o campo Nome de Usuário.');
-           usernameInput.focus();
-           return;
-        }
-        const emailInput = document.getElementById('email');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailInput && !emailRegex.test(emailInput.value.trim())) {
         e.preventDefault();
-        showError('Está faltando o @ no e-mail. Insira um e-mail válido.');
-        emailInput.focus();
-        return;
-        }
-        // checa se os campos de senha existem antes
-        if (passwordInput && confirmInput) {
-            if (passwordInput.value !== confirmInput.value) {
-                e.preventDefault();
-                showError('As senhas não coincidem.');
-                confirmInput.focus();
-                return;
-            }
-        }
 
-        if (geoCheckbox && geoCheckbox.checked && (!latInput.value || !lngInput.value)) {
-            e.preventDefault();
-            showError('Aguardando localização ou permissões. Desmarque a opção ou tente novamente.');
+        // validações básicas
+        const username = (usernameInput && usernameInput.value || '').trim();
+        const email = (emailInput && emailInput.value || '').trim();
+        const password = (passwordInput && passwordInput.value || '');
+        const confirm = (confirmInput && confirmInput.value || '');
+
+        if (!username) { showMessage('Preencha o nome de usuário.'); usernameInput.focus(); return; }
+        if (!email) { showMessage('Preencha o e-mail.'); emailInput.focus(); return; }
+
+        // validação de formato de e-mail (simples)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showMessage('E-mail inválido. Insira um endereço de e-mail válido.'); 
+            emailInput.focus();
             return;
         }
 
-        // Se todas as validações passaram, redireciona para login.html
-        e.preventDefault(); // Impede envio real do formulário (remova se for usar backend)
-        window.location.href = '../../login.html';
+        if (!password) { showMessage('Preencha a senha.'); passwordInput.focus(); return; }
+        if (password !== confirm) { showMessage('As senhas não coincidem.'); confirmInput.focus(); return; }
+
+        if (geoCheckbox && geoCheckbox.checked && (!latInput.value || !lngInput.value)) {
+            showMessage('Aguardando localização ou permissões. Desmarque a opção ou tente novamente.');
+            return;
+        }
+
+        // MOCK: salva usuário no localStorage (NÃO USE em produção para senhas reais)
+        const user = {
+            username,
+            email,
+            password, // apenas mock — em produção sempre hash de senha no servidor
+            latitude: latInput.value || null,
+            longitude: lngInput.value || null,
+            createdAt: new Date().toISOString()
+        };
+
+        const usersKey = 'mock_users';
+        const existing = JSON.parse(localStorage.getItem(usersKey) || '[]');
+
+        // opcional: impedir duplicatas por email/username no mock
+        const duplicate = existing.find(u => u.email === email || u.username === username);
+        if (duplicate) {
+            showMessage('Já existe uma conta com esse e-mail ou nome de usuário.');
+            return;
+        }
+
+        existing.push(user);
+        localStorage.setItem(usersKey, JSON.stringify(existing));
+
+        // sucesso: mostra mensagem e redireciona para a página de login
+        showMessage('Conta criada (mock) com sucesso. Redirecionando...', false);
+        form.reset();
+        clearCoords();
+
+        // espera 1s para o usuário ver a mensagem, depois redireciona
+        setTimeout(function () {
+            // caminho relativo a partir de HTML/mockup-criacao-conta/src/criaConta.html para HTML/login.html
+            window.location.href = '../../login.html';
+        }, 1000);
     });
 
-    // limpa erro se usuário corrigir a confirmação
     if (confirmInput) {
         confirmInput.addEventListener('input', function () {
-            if (errorEl.textContent && passwordInput && passwordInput.value === confirmInput.value) {
-                showError('');
-            }
+            if (errorEl.textContent && passwordInput.value === confirmInput.value) showMessage('', false);
         });
     }
 });

@@ -17,5 +17,17 @@
         <button type="submit">Entrar</button>
     </form>
     <p>Não tem uma conta? <a href="mockup-criacao-conta/src/criaConta.html">Crie aqui</a></p>
+
+    <script>
+    // redireciona para index.html ao submeter o formulário (mock)
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // evita envio real
+            // aqui você poderia validar credenciais; neste mock apenas redireciona
+            window.location.href = 'index.html';
+        });
+    });
+    </script>
 </body>
 </html>
