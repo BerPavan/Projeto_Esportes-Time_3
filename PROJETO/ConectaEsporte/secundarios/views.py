@@ -43,8 +43,7 @@ def perfil_view(request):
     posts_count = Posts.objects.filter(autor=user).count()
 
     respostas_count = Resposta.oobjects.filter(autor=user).count()
-
-"Esses valores são só um palpite do que poderia ser as metas"
+    
     META_TIPOS = 10
     META_POSTS = 5
     META_RESPOSTAS = 20
