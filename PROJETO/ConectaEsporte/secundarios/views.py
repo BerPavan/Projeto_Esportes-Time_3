@@ -34,50 +34,50 @@ def mapa_view(request):
 def post_view(request):
     return render(request, 'secundarios/post.html')
 
-def perfil_view(request):
-    return render(request, 'secundarios/perfil.html')
+# def perfil_view(request):
+#     return render(request, 'secundarios/perfil.html')
 
 def chats_view(request):
     return render(request, 'secundarios/chats.html')
 
 #@login_required
-# def perfil_view(request):
-#     user = request.user
+def perfil_view(request):
+    user = request.user
 
-#     tipos_distintos = SearchLog.objects.filter(usuario=user).exclude(tipo='').values_list('tipo', flat=True).distinct()
-#     tipos_count = tipos_distintos.count()
+    tipos_distintos = SearchLog.objects.filter(usuario=user).exclude(tipo='').values_list('tipo', flat=True).distinct()
+    tipos_count = tipos_distintos.count()
 
-#     buscas_totais = SearchLog.objects.filter(usuario=user).count()
+    buscas_totais = SearchLog.objects.filter(usuario=user).count()
 
-#     posts_count = Post.objects.filter(autor=user).count()
+    posts_count = Post.objects.filter(autor=user).count()
 
-#     respostas_count = Resposta.objects.filter(autor=user).count()
+    respostas_count = Resposta.objects.filter(autor=user).count()
 
-# # Esses valores são só um palpite do que poderia ser as metas
-#     META_TIPOS = 10
-#     META_POSTS = 5
-#     META_RESPOSTAS = 20
+# Esses valores são só um palpite do que poderia ser as metas
+    META_TIPOS = 10
+    META_POSTS = 5
+    META_RESPOSTAS = 20
 
-#     def pct(count, meta):
-#         if meta <= 0:
-#             return 0
-#         value = int((count / meta) * 100)
-#         return 100 if value > 100 else value
+    def pct(count, meta):
+        if meta <= 0:
+            return 0
+        value = int((count / meta) * 100)
+        return 100 if value > 100 else value
     
-#     context = {
-#         'tipos_count': tipos_count,
-#         'buscas_totais': buscas_totais,
-#         'posts_count': posts_count,
-#         'respostas_count': respostas_count,
-#         'pct_tipos': pct(tipos_count, META_TIPOS),
-#         'pct_posts': pct(posts_count, META_POSTS),
-#         'pct_respostas': pct(respostas_count, META_RESPOSTAS),
-#         'META_TIPOS': META_TIPOS,
-#         'META_POSTS': META_POSTS,
-#         'META_RESPOSTAS': META_RESPOSTAS,
-#     }
+    context = {
+        'tipos_count': tipos_count,
+        'buscas_totais': buscas_totais,
+        'posts_count': posts_count,
+        'respostas_count': respostas_count,
+        'pct_tipos': pct(tipos_count, META_TIPOS),
+        'pct_posts': pct(posts_count, META_POSTS),
+        'pct_respostas': pct(respostas_count, META_RESPOSTAS),
+        'META_TIPOS': META_TIPOS,
+        'META_POSTS': META_POSTS,
+        'META_RESPOSTAS': META_RESPOSTAS,
+    }
     
-#     return render(request, 'secundarios/perfil.html', context)
+    return render(request, 'secundarios/perfil.html', context)
 
 
 
