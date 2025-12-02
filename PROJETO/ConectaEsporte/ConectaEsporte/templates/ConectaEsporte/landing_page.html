@@ -11,7 +11,6 @@
 -->
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
-
 </head>
 
 
@@ -33,7 +32,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" > Página principal </a>
       <a class="nav-item nav-link" >Feed</a>
-      <a class="nav-item nav-link" >Mapa</a>
+      <a class="nav-item nav-link" href="{% url 'secundarios:mapa' %}">Mapa</a>
     </div>
 
   <!-- botões de login -->
@@ -45,8 +44,6 @@
     
   </div>
 </nav>
-
-
 
 
 
