@@ -9,7 +9,7 @@ urlpatterns = [
     path('signup/', views.criaConta_view, name='criaConta'),
 #    path('profile/', views.perfil_view, name='perfil'),
     path('login/', auth_views.LoginView.as_view(template_name='secundarios/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    #path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('home_conta/',views.home_conta_view, name= 'home_conta'),
     #path('post/<int:post_id>',views.post_view, name= 'post'),
     path('post/',views.post_view, name= 'post'),
