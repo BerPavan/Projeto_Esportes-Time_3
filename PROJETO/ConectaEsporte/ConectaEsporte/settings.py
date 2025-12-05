@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'ConectaEsporte',
     'secundarios',
+    "usuario", 
     #'django.contrib.sites',
 ]
 
@@ -131,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -138,12 +140,12 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LOGOUT_REDIRECT_URL = '/accounts/login/'  # Para onde vai após logout
+LOGOUT_REDIRECT_URL = '/'  # Para onde vai após logout
 LOGIN_URL = '/accounts/login/'       # URL de login (padrão)
 # ATENÇÃO!!! Troque o valor da variável abaixo para que ela seja uma das rotas
 # válidas no seu arquivo MeuSite/curriculo/urls.py
 # LOGIN_REDIRECT_URL = '/curriculo/spiff/'   # Para onde vai após login
-LOGIN_REDIRECT_URL = '/secundario/home_conta/'   # Para onde vai após login
+LOGIN_REDIRECT_URL = '/secundarios/home_conta/'   # Para onde vai após login
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

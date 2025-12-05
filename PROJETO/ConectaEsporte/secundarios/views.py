@@ -7,7 +7,7 @@ from django.db.models import Q, Count
 from .models import Place
 #,Post, Resposta, SearchLog
 
-# Views de cada página secundária
+
 def criaConta_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -23,11 +23,10 @@ def feed_view(request):
     posts = Post.objects.select_related('autor').all()
     return render(request, 'secundarios/feed.html', {'posts': posts})
 
+@login_required
 def home_conta_view(request):
     return render(request, 'secundarios/home_conta.html')
 
-def login_view(request):
-    return render(request, 'secundarios/login.html')
 
 def mapa_view(request):
     return render(request, 'secundarios/mapa.html')
@@ -41,11 +40,11 @@ def post_view(request):
 def chats_view(request):
     return render(request, 'secundarios/chats.html')
 
-@login_required(login_url='/secundarios/login/')
+@login_required
 def busca_view(request):
     return render(request, 'secundarios/busca.html')
 
-#@login_required
+@login_required
 def perfil_view(request):
     user = request.user
 

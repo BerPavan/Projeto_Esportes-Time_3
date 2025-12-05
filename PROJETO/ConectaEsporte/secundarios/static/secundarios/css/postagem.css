@@ -1,0 +1,105 @@
+body
+{
+    background-color: beige;
+}
+.username
+{
+    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    gap: 10rm;
+}
+
+.username img
+{
+    padding: 16px;
+}
+
+.inform
+{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+}
+.postagem
+{
+    background-color: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.interacao
+{
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 12px;
+    background-color: ghostwhite;
+}
+
+.comentario
+{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-top: 12px;
+}
+.comentario ul
+{
+    list-style-type: none;
+    
+}
+
+.msg
+{
+    
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: orange;
+    padding: 8px;
+    
+}
+
+.msg div
+{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+li
+{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.responder
+{
+    padding: 10px;
+    padding-left: 100px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}

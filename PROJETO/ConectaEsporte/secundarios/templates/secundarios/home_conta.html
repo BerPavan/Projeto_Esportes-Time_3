@@ -56,6 +56,7 @@
       </a>
     </div>    
   </div>
+  <form method='POST' action="{% url 'logout' %}">{% csrf_token %}<button type='submit'>Logout</button></form>
 </nav>
 
 <div class="corpo">
