@@ -45,13 +45,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'ConectaEsporte',
     'secundarios',
-    'django.contrib.sites',
+    #'django.contrib.sites',
 ]
 
 # Configuração necessária quando 'django.contrib.sites' está ativado.
 # Define o ID do Site atual. Se a tabela django_site não tiver uma entrada com
 # esse ID, rode as migrations e crie/atualize o Site correspondente.
-SITE_ID = 1
+#SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
