@@ -11,6 +11,7 @@
 -->
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
+    <link rel="stylesheet" href="{% static 'ConectaEsporte/css/dropdown.css' %}">
 </head>
 
 
@@ -56,18 +57,28 @@
   <!-- busca -->
 <div class="main_busca">
       <!--  botão dropdown -->
-      <div class="dropdown">
-  
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{% url 'secundarios:perfil' %}">Perfil</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
 
+      
+          <div class="dropdown">
+          <button class="dropbtn"><img src="{% static 'ConectaEsporte/img/filtro.png' %}" alt="Filtros" style="width:1em;height:1em;"></button>
+            <div class="dropdown-content">
+            
+            <h4>Filtros</h4>
+            <t>Custo</t>
+            <select name="custo" id="custo">
+                <option value="baixo">Baixo</option>
+                <option value="medio">Médio</option>
+                <option value="alto">Alto</option>
+            </select>
+            <br>
+            <h4>Região</h4>
+            <form >
+                <input placeholder="'Seu bairro'">
+                <button type="submit">Search</button>
+            </form>
+            </div>
+            
+          </div>
       <!-- barra de busca 
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

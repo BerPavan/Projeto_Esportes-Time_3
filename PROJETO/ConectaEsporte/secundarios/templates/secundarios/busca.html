@@ -11,6 +11,7 @@
 -->
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
+    <link rel="stylesheet" href="{% static 'ConectaEsporte/css/dropdown.css' %}">
 
 </head>
 
@@ -47,9 +48,15 @@
 </nav>
 
 
-<div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-        <div id="myDropdown" class="dropdown-content">
+ <!-- busca -->
+<div class="pesquisa">
+      <!--  botão dropdown -->
+
+      
+          <div class="dropdown">
+          <button class="dropbtn"><img src="{% static 'ConectaEsporte/img/filtro.png' %}" alt="Filtros" style="width:1em;height:1em;"></button>
+            <div class="dropdown-content">
+            
             <h4>Filtros</h4>
             <t>Custo</t>
             <select name="custo" id="custo">
@@ -63,20 +70,33 @@
                 <input placeholder="'Seu bairro'">
                 <button type="submit">Search</button>
             </form>
+            </div>
             
-        </div>
+          </div>
+      <!-- barra de busca 
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+-->
+
+  <form >
+    <input type="search" placeholder="Search">
+    <button type="submit">Search</button>
+  </form>
+
+
+  <a href="{% url 'secundarios:busca' %}"><img src="{% static 'secundarios/img/lupa.png' %}" alt="Lupa" style="width:3em;height:3em;"></a>
+
+  
 </div>
-    <form >
-        <input type="search" placeholder="Search">
-        <button type="submit">Search</button>
-    </form>
 
 
 <h1>Locais</h1>
 
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="search" placeholder="Buscar carro..." value="{{ search_query }}">
+        <input type="text" name="search" placeholder="Buscar um local" value="{{ search_query }}">
         <button type="submit">Buscar</button>
     </form>
 
@@ -84,14 +104,9 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>MPG</th>
-                <th>Cilindros</th>
-                <th>Disposição</th>
-                <th>Potência</th>
-                <th>Peso</th>
-                <th>Aceleração</th>
-                <th>Câmbio</th>
-                <th>Marchas</th>
+                <th>Bairro</th>
+                <th>Custo</th>
+                <th>Funcionamento</th>
             </tr>
         </thead>
         <tbody>
