@@ -28,19 +28,33 @@ class Place(models.Model):
     def __str__(self):
         return self.nome
 
+# class Post(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     autor = models.TextField(db_column='OP')
+#     titulo = models.TextField(db_column='TITLE')
+#     conteudo = models.TextField(db_column='CONTENT')
+#     criado_em = models.DateTimeField(auto_now_add=True)
+
+#     class Meta:
+#         ordering = ['id']
+    
+#     def __str__(self):
+#         return "Post avulso: " self.titulo
+
+
+
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
-    autor = models.TextField(db_column='OP')
-    titulo = models.TextField(db_column='TITLE')
-    conteudo = models.TextField(db_column='CONTENT')
+    autor = models.CharField(max_length=100)
+    titulo = models.CharField(max_length=200)
+    conteudo = models.TextField()
     criado_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['id']
-    
-    def __str__(self):
-        return self.titulo
+        ordering = ['-criado_em']
 
+    def __str__(self):
+        return f"{self.titulo} ({self.autor})"
 
 class MTCars(models.Model):
     id = models.AutoField(primary_key=True)
