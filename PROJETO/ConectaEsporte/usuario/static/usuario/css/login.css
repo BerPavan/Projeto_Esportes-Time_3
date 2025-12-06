@@ -1,17 +1,19 @@
 .container
 {
     max-width: 400px;
-    margin: 0 auto;
+    margin: auto auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: beige;
+    
+;
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-    width: 100%;
+    width: 70%;
     padding: 12px;
     margin: 10px 0;
     border: 2px solid #e0e0e0;

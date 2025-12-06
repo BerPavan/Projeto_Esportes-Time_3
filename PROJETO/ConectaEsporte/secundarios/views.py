@@ -20,8 +20,8 @@ def criaConta_view(request):
     return render(request, 'secundarios/criaConta.html', {'form': form})
 
 def feed_view(request):
-    posts = Post.objects.select_related('autor').all()
-    return render(request, 'secundarios/feed.html', {'posts': posts})
+    #posts = Post.objects.select_related('autor').all()
+    return render(request, 'secundarios/feed.html')#, {'posts': posts})
 
 @login_required
 def home_conta_view(request):
