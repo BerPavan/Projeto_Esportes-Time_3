@@ -61,41 +61,40 @@
   </div>
 </nav>
 <div class="corpo">
-  
-    <h1>Novidades</h1>
+    <h2>Novidades</h2>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="text" name="search" placeholder="Buscar post..." value="{{ search_query }}">
+    <!-- formulário de busca (GET) -->
+    <form method="get" action="{% url 'secundarios:feed' %}" style="margin-bottom:12px;">
+        <input type="text" name="q" placeholder="Buscar por título, conteúdo ou autor" value="{{ q|default:'' }}" />
         <button type="submit">Buscar</button>
+        {% if q %}
+            <a href="{% url 'secundarios:feed' %}">Limpar</a>
+        {% endif %}
     </form>
 
-
-
-      <div class="feed">
-        {% for post in posts %}
-          <div class="c2" style="margin-bottom: 24px; border: 1px solid #ccc; padding: 16px;">
-            <div>
-              <img src="{% static '/secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;"> {{ post.autor }}
-            </div>
-            <div>
-              <h3>{{ post.titulo|escape }}</h3>
-              <p>{{ post.conteudo|linebreaksbr }}</p>
-            </div>
-            <small>Publicado em {{ post.criado_em|date:"d/m/Y H:i" }}</small>
+    <div class="feed">
+      {% for post in posts %}
+        <a href="{% url 'secundarios:post' %}?id={{ post.id }}">
+          <div class="c2" style="margin-bottom:16px; padding:12px; border:1px solid #ddd;">
+              <div style="display:flex; align-items:center; gap:10px;">
+                  <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
+                  <strong>{{ post.autor }}</strong>
+              </div>
+              <div style="margin-top:8px;">
+                  <div>
+                      <h3 style="margin:0;">{{ post.titulo }}</h3>
+                  </div>
+                  <div>
+                      <p style="margin:6px 0;">{{ post.conteudo|linebreaksbr }}</p>
+                  </div>
+                  <small>Publicado em {{ post.criado_em|date:"d/m/Y H:i" }}</small>
+              </div>
           </div>
-        {% empty %}
-          <p>Não há postagens cadastradas.</p>
-        {% endfor %}
-      </div>
-
-
-
-</div> 
+        </a>
+      {% empty %}
+        <p>Não há postagens cadastradas.</p>
+      {% endfor %}
+    </div>
 </body>
 
-<footer>
-  redes sociais
-  doações
-</footer>
 </html>
