@@ -34,12 +34,12 @@ def searchf(request):
         # No template, você pode acessar esses dados usando as chaves do dicionário.
         contexto = {
             'search_query': search_query,   # o texto pesquisado
-            'post': post                # os resultados da pesquisa
+            'posts': post                # os resultados da pesquisa
         }
         # No meu caso, eu mostro a mesma página,
         # mas você pode usar outro template para mostrar uma página diferente.
         # Basta trocar o nome do arquivo HTML no parâmetro da função render a seguir.
-        return render(request, 'feed.html', contexto)
+        return render(request, 'secundarios/feed.html', contexto)
 
 @login_required
 def home_conta_view(request):

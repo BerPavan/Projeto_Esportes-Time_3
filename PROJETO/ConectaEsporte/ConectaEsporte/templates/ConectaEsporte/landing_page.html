@@ -17,39 +17,13 @@
 
 <body>
   <!-- nav bar-->
-<nav class="navbar navbar-expand-lg">
-
-  <!-- logo -->
-  <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'ConectaEsporte/img/Logo_Proj.png' %}" alt="" style="width: 8em;height: 2.75em;"></a>
-  
-  <!-- botão menu para celular -->
- 
-
-  <!-- abas de navegação -->
-
-
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" > Página principal </a>
-      <a class="nav-item nav-link" href="{% url 'secundarios:feed' %}">Feed</a>
-      <a class="nav-item nav-link" href="{% url 'secundarios:mapa' %}">Mapa</a>
-    </div>
-
-  <!-- botões de login -->
-    <div class = "login">
-      <a href="{% url 'login' %}">Entrar</a>
-      <a href="{% url 'secundarios:criaConta' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Cadastre-se</a>
-    </div>
-
-    
-    
-  </div>
-</nav>
+{% include 'secundarios/base.html' %}
 
 
 
 
 <div class="corpo">
-
+{% block content %}
 
 
   
@@ -116,7 +90,7 @@
 
 </div>
 </div>
-    
+{% endblock %}
 </body>
 
 <footer>

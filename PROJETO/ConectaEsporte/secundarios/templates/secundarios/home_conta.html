@@ -19,44 +19,26 @@
 
   <!-- logo -->
   <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'ConectaEsporte/img/Logo_Proj.png' %}" alt="" style="width: 8em;height: 2.75em;"></a>
-
-  <!-- botão menu para telefone -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
 
   <!-- abas de navegação -->
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="{% url 'home' %}">Página Principal</a>
-      <a class="nav-item nav-link active" > Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" >Features</a>
-      <a class="nav-item nav-link" >Pricing</a>
-      <a class="nav-item nav-link disabled">Disabled</a>
-      <!--  botão dropdown -->
-      <div class="dropdown">
-  
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
+      <a class="nav-item nav-link active" > Home </a>
+      <a class="nav-item nav-link" href="{% url 'secundarios:mapa' %}">Mapa</a>
     </div>
 
   <!-- perfil -->
     <div class = "icon_perfil">
       <a href="{% url 'secundarios:perfil' %}">
         <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:3em;height:3em;">
-        <t>Nome perfil</t>
+        <t>Nome</t>
       </a>
-    </div>    
-  </div>
-  <form method='POST' action="{% url 'logout' %}">{% csrf_token %}<button type='submit'>Logout</button></form>
+      
+      <form method='POST' action="{% url 'logout' %}">{% csrf_token %}<button type='submit'>Logout</button></form>
+    </div> 
+  
 </nav>
 
 <div class="corpo">
