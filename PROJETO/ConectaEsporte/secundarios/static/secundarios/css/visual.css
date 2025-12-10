@@ -21,7 +21,7 @@
 
 /* dentro de visual.css */
 .main_busca form {
-  width: 100%;
+  
   display: flex;
   gap: 12px;
   align-items: center;
@@ -30,8 +30,8 @@
 
 /* especifica apenas o input de busca no bloco main_busca */
 .main_busca form input[type="text"] {
-  flex: 1;             /* ocupa o espaço disponível */
-  width: auto;         /* ignora width:70% anterior */
+              /* ocupa o espaço disponível */
+  width: 70%;         /* ignora width:70% anterior */
   padding: 12px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;

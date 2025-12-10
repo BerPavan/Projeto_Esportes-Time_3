@@ -19,12 +19,52 @@
 
 }
 
+/* dentro de visual.css */
+.main_busca form {
+  width: 10%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* especifica apenas o input de busca no bloco main_busca */
+.main_busca form input[type="text"] {
+  flex: 1;             /* ocupa o espaço disponível */
+  width: 70%;         /* ignora width:70% anterior */
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* botão de busca: tamanho natural com bordas arredondadas */
+.main_busca form button[type="submit"] {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #fe8a24 0%, #ecc835 100%);
+  color: #8b0000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* focus */
+.main_busca form input[type="text"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 10px rgba(102,126,234,0.25);
+}
+
+
 .botoes{
   display: flex;  
   justify-content: space-evenly;
-
   margin: 5em auto;
 }
+
 
 .texto{
   display: flex;
@@ -53,7 +93,7 @@ img{
 }
 */
 
-.novidade{
+.novidade{ /*texto + container empilhado*/
   display:flex;
   flex-direction: column;
 
@@ -61,7 +101,7 @@ img{
   
   
 }
-.sugestao{
+.sugestao{ /*container das sugestões de postagem*/
   display: flex;
   flex-direction: row;
 
@@ -69,15 +109,13 @@ img{
   justify-content:space-evenly;
 }
 
-.c1{
-  display: flex;
-  
-
-  background-color: antiquewhite;
-  margin: 1em;
-}
-
-.t1{
+.t1{/* texto "Novidades */
   margin:1em 0em 0em 1em;
   font-size: 2em;
+}
+
+.feed{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
