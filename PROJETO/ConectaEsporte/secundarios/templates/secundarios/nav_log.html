@@ -13,10 +13,12 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar">
 
   <!-- logo -->
-  <a class="navbar-brand" href="{% url 'secundarios:home_conta' %}"><img src="{% static 'ConectaEsporte/img/Logo_Proj.png' %}" alt="" style="width: 8em;height: 2.75em;"></a>
+  <a class="navbar-brand" href="{% url 'secundarios:home_conta' %}">
+    <img src="{% static 'ConectaEsporte/img/Logo_Proj.png' %}" alt="" style="width: 8em;height: 2.75em;">
+  </a>
   
 
   <!-- abas de navegação -->
@@ -25,20 +27,19 @@
       <a class="nav-item nav-link" href="{% url 'secundarios:home_conta' %}">Página Principal</a>
       <a class="nav-item nav-link" href="{% url 'secundarios:feed' %}">Feed</a>
       <a class="nav-item nav-link" href="{% url 'secundarios:mapa' %}">Mapa</a>
-
       <a class="nav-item nav-link" href="{% url 'secundarios:chats' %}">Chats</a>
       
     </div>
 
   <!-- perfil -->
-    <div class = "icon_perfil">
+    <div class = "login">
       <a href="{% url 'secundarios:perfil' %}">
         <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:3em;height:3em;">
-        <t>Nome</t>
+        <span class="user-name">{{ user.get_full_name|default:user.username }}</span>
       </a>
       
       <form method='POST' action="{% url 'logout' %}">{% csrf_token %}<button type='submit'>Logout</button></form>
-    </div> 
+    </div>
   
 </nav>
 

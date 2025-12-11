@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Conecta Esporte</title>
     
-    <link rel="stylesheet" href="{% static 'secundarios/css/visual.css' %}">
+    <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
     <link rel="stylesheet" href="{% static 'secundarios/css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'secundarios/css/postagem.css' %}">
 
@@ -21,7 +21,7 @@
         <div>
             <div class="username">
                 <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
-                <h1>OP</h1>
+                <h1 class="op">{{ post.autor }}</h1>
             </div>
             <div class="inform">
               <div>
@@ -30,11 +30,11 @@
 
               <div>
                   <div>
-                      <h1>Titulo</h1>
-                      <t>tag</t>
+                      <h1>{{ post.titulo }}</h1>
+                      <p>{{ post.tag}}</p>
                   </div>
                   <div>
-                      <t>texto</t>
+                      <p style="margin:6px 0;">{{ post.conteudo|linebreaksbr }}</p>
                   </div>             
               </div>
            

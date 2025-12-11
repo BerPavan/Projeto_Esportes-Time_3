@@ -11,7 +11,7 @@
 -->
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
-    <link rel="stylesheet" href="{% static 'ConectaEsporte/css/dropdown.css' %}">
+  
 </head>
 
 
@@ -60,8 +60,8 @@
 </div>
 
 <div class= "texto">
-<h2 class= "convite">Inscreva-se já!</h2>
-<div>
+<h2>Inscreva-se já!</h2>
+<div class="convite">
   <a href="{% url 'secundarios:home_conta' %}">Login</a>
   <a href="{% url 'secundarios:criaConta' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Crie sua conta</a>
 </div>
@@ -72,11 +72,6 @@
 {% endblock %}
 </body>
 
-<footer>
-  <a href="{% url 'secundarios:home_conta' %}">página logado</a>
-  redes sociais
-  doações
-</footer>
 </html>
 
 

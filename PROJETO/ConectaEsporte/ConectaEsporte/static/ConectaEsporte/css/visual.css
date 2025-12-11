@@ -1,3 +1,9 @@
+.convite
+{
+  gap: 2em;
+  font-size: 1.5em;
+}
+
 .corpo{
   margin: 0 auto; 
   width: 75em;
@@ -21,7 +27,7 @@
 
 /* dentro de visual.css */
 .main_busca form {
-  width: 10%;
+  width: 70%;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -30,7 +36,7 @@
 
 /* especifica apenas o input de busca no bloco main_busca */
 .main_busca form input[type="text"] {
-  flex: 1;             /* ocupa o espaço disponível */
+              /* ocupa o espaço disponível */
   width: 70%;         /* ignora width:70% anterior */
   padding: 12px;
   border: 2px solid #e0e0e0;

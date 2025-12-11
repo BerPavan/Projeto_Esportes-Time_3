@@ -90,7 +90,19 @@ def mapa_view(request):
     return render(request, 'secundarios/mapa.html')
 
 def post_view(request):
-    return render(request, 'secundarios/post.html')
+    """
+    Exibe uma única postagem. Espera receber o id via query string: /post/?id=123
+    Se o id não for fornecido redireciona para o feed.
+    """
+    post_id = request.GET.get('id')
+    if not post_id:
+        return redirect('secundarios:feed')
+
+    post = get_object_or_404(Post, id=post_id)
+
+    # respostas e manipulação de comentários estão comentadas no modelo,
+    # então por enquanto apenas renderizamos a postagem.
+    return render(request, 'secundarios/post.html', {'post': post})
 
 
 def chats_view(request):
