@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Conecta Esporte</title>
     
-    
-    <link rel="stylesheet" href="{% static 'secundarios/css/nav.css' %}">
    
     <link rel="stylesheet" href="{% static 'secundarios/css/feed.css' %}">
 
@@ -33,7 +31,9 @@
 
     <div class="feed">
       {% for post in posts %}
+
         <a href="{% url 'secundarios:post' %}?id={{ post.id }}">
+
           <div class="c2" style="margin-bottom:16px; padding:12px; border:1px solid #ddd;">
               <div style="display:flex; align-items:center; gap:10px;">
                   <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
@@ -51,7 +51,7 @@
           </div>
         </a>
       {% empty %}
-        <p>Não há postagens cadastradas.</p>
+        <p>Sem correspondências.</p>
       {% endfor %}
     </div>
 </body>

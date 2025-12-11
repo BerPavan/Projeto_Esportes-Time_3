@@ -39,3 +39,9 @@
   justify-content: center;
 }
 
+.login a {
+  display: flex;
+  color: rgba(0, 0, 0, 0.55);
+  align-items: center;
+  justify-content: center;
+}
