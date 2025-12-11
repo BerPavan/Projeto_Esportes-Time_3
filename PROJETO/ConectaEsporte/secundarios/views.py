@@ -120,7 +120,7 @@ def mapa_view(request):
     return render(request, 'secundarios/mapa.html')
 
 def mapaLog_view(request):
-    return render(request, 'secundarios/mapa.html')
+    return render(request, 'secundarios/mapaLog.html')
 
 @login_required
 def post_view(request):
