@@ -4,105 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Conecta Esporte</title>
-    
-    <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
+    <title>{{ post.titulo }} - Conecta Esporte</title>
     <link rel="stylesheet" href="{% static 'secundarios/css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'secundarios/css/postagem.css' %}">
-
 </head>
 
+<body>
 {% include 'secundarios/nav_log.html' %}
 
-
-
-<body>
     <div class="postagem">
         <div>
-            <div class="username">
+            <div class="usuario">
                 <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
-                <h1 class="op">{{ post.autor }}</h1>
+                <h1>{{ post.autor }}</h1>
             </div>
             <div class="inform">
               <div>
-                  <img src="{% static 'secundarios/img/foto.png' %}" style="width:500px;height:250px;">
-              </div>
-
-              <div>
-                  <div>
+                  <div style="display:flex; flex-direction: row; gap: 9px; align-items: center;">
                       <h1>{{ post.titulo }}</h1>
-                      <p>{{ post.tag}}</p>
+                      <span class="tag">{{ post.tag}}</span>
                   </div>
                   <div>
                       <p style="margin:6px 0;">{{ post.conteudo|linebreaksbr }}</p>
                   </div>             
               </div>
-           
-
             </div>
         </div>
     </div>
-
-    <div class="interacao">
-    <h1>Comentários</h1>
-        <div class="comentario">
-          <ul>
-            <li>
-                <div class="msg">
-                  <div>
-                    <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
-                    <h1>Usuário</h1>
-                  </div>                    
-                </div>
-                <div>
-                    <t>texto</t>
-                </div>
-            </li>
-            
-            <li>
-                <div class="msg">
-                  <div>
-                    <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
-                    <h1>Usuário</h1>
-                  </div>                    
-                </div>
-                <div>
-                    <t>texto</t>
-                </div>
-            </li>
-                        <li>
-                <div class="msg">
-                  <div>
-                    <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
-                    <h1>Usuário</h1>
-                  </div>                    
-                </div>
-                <div>
-                    <t>texto</t>
-                </div>
-            </li>
-
-          </ul>
+    <div class="sessao-comentarios">
+    <h2>Comentários</h2>
+    <div class="titulo-divisor"></div>
+      <div class="comentario">
+        <img src="{% static 'secundarios/img/icon_perfil.png' %}" alt="Avatar">
+        <div class="comentario-body">
+          <strong>José</strong>
+          <p>Uau que legal!</p>
         </div>
-
-        
-        
-      <div class="responder">
-        <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
-          <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Escreva um comentário">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button>
-          </form>
       </div>
-
+      <div class="comentario">
+        <img src="{% static 'secundarios/img/icon_perfil.png' %}" alt="Avatar">
+        <div class="comentario-body">
+          <strong>Arlindo</strong>
+          <p>Parece divertido :D</p>
+        </div>
+      </div>
     </div>
+    
 
-
+    <!-- Formulário para adicionar comentário -->
+    <div class="comentario-form">
+      <img src="{% static 'secundarios/img/icon_perfil.png' %}" alt="Seu avatar">
+      <input type="text" placeholder="Escreva um comentário..." required>
+      <button type="submit">Enviar</button>
+    </div>
+  </section>
+</main>
 
 </body>
-
-<footer>
-  redes sociais
-  doações
-</footer>
 </html>

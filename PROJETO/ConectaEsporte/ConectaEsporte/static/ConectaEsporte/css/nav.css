@@ -9,6 +9,11 @@
   width: 100%;
 }
 
+.user-name {
+  font-family: confortaa, sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+}
 
 
 /* ===== Navegação ===== */
@@ -41,7 +46,11 @@
 
 .login a {
   display: flex;
-  color: rgba(0, 0, 0, 0.55);
+  color:darkslategray;
   align-items: center;
   justify-content: center;
+}
+
+.login a img {
+ padding-right: 7px;
 }

@@ -41,7 +41,7 @@
 -->
 
   <form method="get" action="{% url 'secundarios:feed' %}" style="margin-bottom:12px;">
-      <input type="text" name="q" placeholder="Buscar por título, conteúdo ou autor" value="{{ q|default:'' }}" />
+      <input type="text" name="q" placeholder="Buscar por título, tag ou autor" value="{{ q|default:'' }}" />
       <button type="submit">Buscar</button>
       {% if q %}
           <a href="{% url 'secundarios:feed' %}">Limpar</a>

@@ -10,6 +10,12 @@
 
 }
 
+h1{
+  font-family: confortaa, sans-serif; 
+  font-size: 3em; /* Sets the font size (e.g., 3 times the base font size) */
+  text-decoration: none;
+  color: #c03535; /* Sets the text color using a hexadecimal code */
+}
 
 
 .main_busca{
@@ -49,10 +55,11 @@
 /* botão de busca: tamanho natural com bordas arredondadas */
 .main_busca form button[type="submit"] {
   padding: 10px 18px;
-  background: linear-gradient(135deg, #fe8a24 0%, #ecc835 100%);
-  color: #8b0000;
+  background: palegoldenrod;
+  color: black;
+  font-size: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -124,4 +131,56 @@ img{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Ajustes visuais para os cards de post em home_conta (igual ao feed) */
+.feed .c1 {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fbfbfb;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.feed .c1:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.feed .c1-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.feed .c1-header img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.feed .c1-content { flex: 1; min-width: 0; }
+.feed .c1-title { margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #0c2340; }
+.feed .c1-text { margin:0 0 0.75rem 0; color:#555; }
+.feed .c1-footer { color:#888; font-size:0.85rem; }
+
+/* Ajuste das imagens dos botões principais (remover inline sizing) */
+.botoes img {
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .botoes { flex-direction: column; gap: 1rem; }
+  .botoes img { max-width: 100%; }
 }

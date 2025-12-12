@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="{% static 'ConectaEsporte/css/visual.css' %}">
     <link rel="stylesheet" href="{% static 'secundarios/css/post.css' %}">
+    <link rel="stylesheet" href="{% static 'secundarios/css/feed.css' %}">
 
 </head>
 
@@ -22,7 +23,7 @@
   <!-- busca -->
 <div class="main_busca">
   <form method="get" action="{% url 'secundarios:feedLog' %}" style="margin-bottom:12px;">
-      <input type="text" name="q" placeholder="Buscar por título, conteúdo ou autor" value="{{ q|default:'' }}" />
+      <input type="text" name="q" placeholder="Buscar por título, tag ou autor" value="{{ q|default:'' }}" />
       <button type="submit">Buscar</button>
       {% if q %}
           <a href="{% url 'secundarios:feedLog' %}">Limpar</a>
@@ -43,33 +44,27 @@
 
 <a href="{% url 'secundarios:feedLog' %}"><h1>Novidades</h1></a>
 <div class="feed">
+      {% for post in posts %}
 
-  {% for post in posts %}
+        <a href="{% url 'secundarios:post' %}?id={{ post.id }}">
 
-  <a href="{% url 'secundarios:post' %}?id={{ post.id }}">
-  <div class="c1">
-    <div class="c1-header">
-      <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-      <h1 class="op">{{ post.autor }}</h1>
-    </div>
-    <div class="c1-body">
-      <div class="c1-content">
-        <h1>{{ post.titulo }}</h1>
-        <p>{{ post.tags }}</p>
-        <p>{{ post.conteudo|linebreaksbr }}</p>
-      </div>
-
-      
-      
-      <small>Publicado em {{ post.criado_em|date:"d/m/Y H:i" }}</small>
-    </div>
-    
-  </div>
-  </a>
-
-
-  {% empty %}
-      <p>Não há postagens cadastradas.</p>
+          <div class="c2" style="margin-bottom:16px; padding:12px; border:1px solid #ddd;">
+              <div style="display:flex; align-items:center; gap:10px;">
+                  <img src="{% static 'secundarios/img/icon_perfil.png' %}" style="width:42px;height:42px;">
+                  <strong>{{ post.autor }}</strong>
+              </div>
+              <div style="margin-top:8px;">
+                  <div style="display:flex; flex-direction: row;">
+                      <h3 style="margin:0;">{{ post.titulo }}</h3><span class="tag">{{post.tag}}</span>
+                  </div>
+                  <div>
+                      <p style="margin:6px 0;">{{ post.conteudo|linebreaksbr }}</p>
+                  </div>
+                  <small>Publicado em {{ post.criado_em|date:"d/m/Y H:i" }}</small>
+              </div>
+          </div>
+  
+        </a>
   {% endfor %}
 
 </div>

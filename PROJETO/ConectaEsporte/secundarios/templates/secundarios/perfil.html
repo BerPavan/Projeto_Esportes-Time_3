@@ -17,23 +17,21 @@
 <div class="espaço-perfil">
     <div class="main-perfil">
         <div class="user">    
-            <img src="{% static 'secundarios/img/icon_perfil.png' %}" alt="Foto de Perfil" style="width:70px;height:70px;">
+            <img src="{% static 'secundarios/img/icon_perfil.png' %}" alt="Foto de Perfil">
             <div class="detalhes-usuario">
-            <p>Nome do Usuário</p>
-            <p>Bio do usuário: Apaixonado por esportes e atividades ao ar livre.</p>
+                <p>{{ user.get_full_name|default:user.username }}</p>
+                <p>Bio do usuário: Apaixonado por esportes e atividades ao ar livre.</p>
             </div>
         </div>
         <div class="info-adicional">
-            <p><strong>Seguidores:</strong> </p>
-            <p>123</p>
-            <p><strong>Seguindo:</strong> </p>
-            <p>321</p>
-            <p><strong>Desafios no mês:</strong></p>
-            <p>13</p>
+            <p><strong>Seguidores:</strong> 123</p>
+            <p><strong>Seguindo:</strong> 321</p>
+            <p><strong>Desafios no mês:</strong> 13</p>
         </div>
     </div>
 </div>
-<h1>Seu Perfil</h1>
+
+<h1>Seus Posts</h1>
 <div class="posts-usuario">
     <!-- -->
     <div >
@@ -42,7 +40,7 @@
           <!-- Header: ícone + nome OP -->
           <div class="c1-header">
             <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-            <h1 class="op">OP</h1>
+            <h1 class="op">{{ user.get_full_name|default:user.username }}</h1>
           </div>
 
           <!-- Body: imagem + conteúdo -->
@@ -54,9 +52,9 @@
 
             <!-- Conteúdo (lado direito) -->
             <div class="c1-content">
-              <h1>Titulo do Post</h1>
-              <t>tag1</t>
-              <t>Descrição breve do post</t>
+              <h1>Testando a Nova Pista de Corrida</h1>
+              <span class="tag">Postagem</span>
+              <p>Conheci a pista nova do parque perto de. Bem sinalizada e ótima para treinos intervalados!</p>
             </div>
           </div>
         </div>
@@ -67,7 +65,7 @@
           <!-- Header: ícone + nome OP -->
           <div class="c1-header">
             <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-            <h1 class="op">OP</h1>
+            <h1 class="op">{{ user.get_full_name|default:user.username }}</h1>
           </div>
 
           <!-- Body: imagem + conteúdo -->
@@ -79,10 +77,10 @@
 
             <!-- Conteúdo (lado direito) -->
             <div class="c1-content">
-              <h1>Titulo do Post</h1>
-              <t>tag1</t>
+              <h1>Sprint de 200m Sem Parar</h1>
+              <span class="tag">Desafio</span>
            
-              <t>Descrição breve do post</t>
+              <p>Fechei os 200 metros de sprint sem diminuir o ritmo. </p>
             </div>
           </div>
         </div>
@@ -100,7 +98,7 @@
           <!-- Header: ícone + nome OP -->
           <div class="c1-header">
             <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-            <h1 class="op">OP</h1>
+            <h1 class="op">{{ user.get_full_name|default:user.username }}</h1>
           </div>
 
           <!-- Body: imagem + conteúdo -->
@@ -112,10 +110,9 @@
 
             <!-- Conteúdo (lado direito) -->
             <div class="c1-content">
-              <h1>Titulo do Post</h1>
-              <t>tag1</t>
-              <t>tag2</t>
-              <t>Descrição breve do post</t>
+              <h1>Mini Torneio de Vôlei</h1>
+              <span class="tag">Evento</span>
+              <p>To procurando gente pra fechar um vôlei amistoso no sábado.</p>
             </div>
           </div>
         </div>
@@ -126,7 +123,7 @@
           <!-- Header: ícone + nome OP -->
           <div class="c1-header">
             <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-            <h1 class="op">OP</h1>
+            <h1 class="op">{{ user.get_full_name|default:user.username }}</h1>
           </div>
 
           <!-- Body: imagem + conteúdo -->
@@ -138,10 +135,10 @@
 
             <!-- Conteúdo (lado direito) -->
             <div class="c1-content">
-              <h1>Titulo do Post</h1>
-              <t>tag1</t>
+              <h1>Mapeando Quadras no Bairro</h1>
+              <span class="tag">Postagem</span>
             
-              <t>Descrição breve do post</t>
+              <p>Fui explorar quadras públicas e encontrei três novos espaços ótimos para treinar!</p>
             </div>
           </div>
         </div>
@@ -157,7 +154,7 @@
           <!-- Header: ícone + nome OP -->
           <div class="c1-header">
             <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-            <h1 class="op">OP</h1>
+            <h1 class="op">{{ user.get_full_name|default:user.username }}</h1>
           </div>
 
           <!-- Body: imagem + conteúdo -->
@@ -169,10 +166,10 @@
 
             <!-- Conteúdo (lado direito) -->
             <div class="c1-content">
-              <h1>Titulo do Post</h1>
-              <t>tag1</t>
+              <h1>10 Km Antes do Sol Nascer</h1>
+              <span class="tag">Postagem</span>
           
-              <t>Descrição breve do post</t>
+              <p>Saindo pra treinar cedinho hoje. Se eu curtir vou tentar um desafio de corrida :D </p>
             </div>
           </div>
         </div>
@@ -183,7 +180,7 @@
           <!-- Header: ícone + nome OP -->
           <div class="c1-header">
             <img src="{% static 'secundarios/img/icon_perfil.png' %}">
-            <h1 class="op">OP</h1>
+            <h1 class="op">{{ user.get_full_name|default:user.username }}</h1>
           </div>
 
           <!-- Body: imagem + conteúdo -->
@@ -195,10 +192,10 @@
 
             <!-- Conteúdo (lado direito) -->
             <div class="c1-content">
-              <h1>Titulo do Post</h1>
-              <t>tag1</t>
+              <h1>Só vitória no vôlei</h1>
+              <span class="tag">Desafio</span>
               
-              <t>Descrição breve do post</t>
+              <p>A meta no jogo hj é fechar sem perder nenhum set</p>
             </div>
           </div>
         </div>

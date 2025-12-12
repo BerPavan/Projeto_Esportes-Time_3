@@ -1,121 +1,287 @@
-.corpo{
-  margin: 0 auto; 
-  width: 75em;
-
+/* Container principal */
+.corpo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #f5f5f5;
 }
 
+/* Tag - Estilo consistente com outras páginas */
+.tag {
+  background-color: #ff9500;
+  color: white;
+  border-radius: 12px;
+  padding: 4px 9px;
+  font-size: 0.9rem;
+  margin-right: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
 
-
-.espaço-perfil{
+/* Seção de perfil do usuário */
+.espaço-perfil {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin: 0 auto; 
-  width: 75em;
-  height: 24em;
-
-  background-color: orange;
-
+  margin: 0 0 2rem 0;
+  padding: 2rem 0;
+  background: transparent;
 }
 
-.main-perfil{
+.main-perfil {
   display: flex;
-    flex-direction: row;
-
-  border-radius: 20px;
-  
-  width: 95%;
-  height: 85%;
-
-  background-color: white;
-
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.user
-{
-    display: flex;
-    flex-direction:row;
-    width: 40%;
-    height: fit-content;
-    margin: 3% 0 0 3%;
-    
+/* Seção do usuário - Avatar e detalhes */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
 }
 
-.detalhes-usuario{
-    display: flex;
+.user img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0c2340;
+  flex-shrink: 0;
+}
+
+.detalhes-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.detalhes-usuario p:first-child {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0c2340;
+}
+
+.detalhes-usuario p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Info adicional - Seguidores, Seguindo, Desafios */
+.info-adicional {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.info-adicional p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.info-adicional strong {
+  color: #0c2340;
+  font-weight: 700;
+}
+
+.info-adicional p:not(:has(strong)) {
+  color: #222;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Título da seção de posts */
+.corpo h1 {
+  margin: 1rem 0 1.5rem 0;
+  font-size: 1.5rem;
+  color: #0c2340;
+  font-weight: 700;
+  font-family: inherit;
+}
+
+/* Grid de posts do usuário */
+.posts-usuario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.posts-usuario > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.posts-usuario a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.2s ease;
+}
+
+.posts-usuario a:hover {
+  transform: translateY(-2px);
+}
+
+/* Card de post (c1) */
+.c1 {
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.c1:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #0c2340;
+}
+
+/* Header do card */
+.c1-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.c1-header img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.c1-header h1 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #222;
+  font-weight: 700;
+}
+
+/* Body do card */
+.c1-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Imagem do post */
+.c1-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.c1-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Conteúdo do card */
+.c1-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.c1-content h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0c2340;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.c1-content t {
+  display: inline-block;
+  background: #f0f0f0;
+  color: #666;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .corpo {
+    padding: 1rem;
+  }
+
+  .main-perfil {
+    padding: 1.5rem;
+  }
+
+  .user {
     flex-direction: column;
-    margin: 0 0 0 3%;
-    
+    text-align: center;
+  }
+
+  .info-adicional {
+    justify-content: center;
+  }
+
+  .posts-usuario {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 
-.info-adicional{
-    display: flex;
-    flex-direction: row;
-    margin: 3% 3%;
+@media (max-width: 768px) {
+  .corpo {
+    padding: 0.75rem;
+  }
 
-    
-}
+  .main-perfil {
+    padding: 1rem;
+    gap: 1rem;
+  }
 
+  .user img {
+    width: 70px;
+    height: 70px;
+  }
 
+  .detalhes-usuario p:first-child {
+    font-size: 1.2rem;
+  }
 
-.botoes{
-  display: flex;  
-  justify-content: space-evenly;
+  .corpo h1 {
+    font-size: 1.3rem;
+  }
 
-  margin: 5em auto;
-}
+  .posts-usuario {
+    grid-template-columns: 1fr;
+  }
 
-.texto{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  background-color:ghostwhite;
-  margin: 0 auto; 
-  width: 75em;
-  height: 24em;
-    
-}
-
-h2{
-  font-family: "Georgia", serif; /* Sets the font family */
-  font-size: 3em; /* Sets the font size (e.g., 3 times the base font size) */
-  /*font-weight: bold; /* Sets the font weight */
-  /*font-style: italic;  Sets the font style (e.g., italic, normal, oblique) */
-  color: #c03535; /* Sets the text color using a hexadecimal code */
-}
-
-/*
-img{
-  border-radius: 3em;
-}
-*/
-
-.novidade{ /*texto + container empilhado*/
-  display:flex;
-  flex-direction: column;
-
-  background-color: ghostwhite;
-  
-  
-}
-.posts-usuario{ /*container das sugestões de postagem*/
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
-  justify-content:space-evenly;
-}
-
-.t1{/* texto "Novidades */
-  margin:1em 0em 0em 1em;
-  font-size: 2em;
-}
-
-.feed{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  .info-adicional {
+    gap: 1rem;
+    padding-top: 1rem;
+  }
 }

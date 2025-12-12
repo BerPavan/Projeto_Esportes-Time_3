@@ -17,12 +17,13 @@
 
 {% include 'secundarios/base.html' %}
 
-<div class="corpo">
+<div class="geral">
+<div class="principal">
     <h2>Novidades</h2>
 
     <!-- formulário de busca (GET) -->
     <form method="get" action="{% url 'secundarios:feed' %}" style="margin-bottom:12px;">
-        <input type="text" name="q" placeholder="Buscar por título, conteúdo ou autor" value="{{ q|default:'' }}" />
+        <input type="text" name="q" placeholder="Buscar por título, tag ou autor" value="{{ q|default:'' }}" />
         <button type="submit">Buscar</button>
         {% if q %}
             <a href="{% url 'secundarios:feed' %}">Limpar</a>
@@ -40,8 +41,8 @@
                   <strong>{{ post.autor }}</strong>
               </div>
               <div style="margin-top:8px;">
-                  <div>
-                      <h3 style="margin:0;">{{ post.titulo }}</h3>
+                  <div style="display:flex; flex-direction: row;">
+                      <h3 style="margin:0;">{{ post.titulo }}</h3><span class="tag">{{post.tag}}</span>
                   </div>
                   <div>
                       <p style="margin:6px 0;">{{ post.conteudo|linebreaksbr }}</p>
@@ -53,6 +54,7 @@
       {% empty %}
         <p>Sem correspondências.</p>
       {% endfor %}
+    </div>
     </div>
 </body>
 
